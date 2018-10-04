@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
+  root 'categories#index'
   
   devise_for :users, controllers: {
-    registrations: 'registrations'
+    registrations: 'registrations',
+    omniauth_callbacks: 'omniauth_callbacks'
   }
 
   resources :users do
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
   resources :carts
 
   
-  root 'categories#index'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
