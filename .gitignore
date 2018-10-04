@@ -21,3 +21,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# OmniAuth
+/config/local_env.yml
