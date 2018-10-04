@@ -1,0 +1,24 @@
+<div class="row">
+      <% @user.each do |product| %>
+      <% if user.product %>
+
+      <div class="col s3 m3 l3">
+      <div class="card grey darken-1">
+            <div class="card-content white-text">
+            <span class="card-title"> <%= link_to product.name, category_product_path(product.category_ids, product.id), class: "card-title"%> </span>
+            <p>Sold by: <%= product.user.name %></p>
+            <p>Price: <%= number_to_currency(product.price) %></p>
+            </div>
+            <div class="card-action">
+            <% if product_author(product) %>
+            <a><%= link_to 'Edit', edit_product_path(product) %></a>
+            <a><%= link_to 'Delete', product, method: :delete, data: { confirm: "Are you sure ?" } %></a>
+            <% end %>
+            
+      <% end %>
+            </div>
+            </div>
+      </div>
+
+      <% end %>
+</div>
