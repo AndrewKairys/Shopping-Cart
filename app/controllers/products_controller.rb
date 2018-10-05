@@ -4,8 +4,16 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    if params[:user_id]
+      @products = User.find(params[:user_id]).products
+    else
+      @category = Category.find(params[:category_id])
+      @products = @category.products.order(:name)
+    end
+  end
+
+  def edit
     @category = Category.find(params[:category_id])
-    @products = @category.products.order(:name)
   end
 
   def show
@@ -17,6 +25,22 @@ class ProductsController < ApplicationController
 
     if @product.save
       redirect_to root_path
+    else
+      :abort
+    end
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to cart_path
+    else
+      :abort
+    end 
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to category_products_path
     else
       :abort
     end
