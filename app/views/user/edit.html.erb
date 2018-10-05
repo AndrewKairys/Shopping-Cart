@@ -1,5 +1,47 @@
 <h2> Editing a Product </h2>
 
 <div>
-  <%= render 'form', product: @product %>
+
+    <%= simple_form_for @product, method: :PATCH, url: category_product_url(product.category_id) do |f| %>
+      <%= f.error_notification %>
+      
+      <div>
+        <div class="input-field">
+          <%= f.association :categories %>
+         </div>
+        </div>
+              
+          <div>
+            <div>
+              <%= f.input :name, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class:"label" } %>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <%= f.input :price, required: true, input_html: { class:"input", maxlength: 7  }, wrapper: false, label_html: { class:"label" } %>
+            </div>
+          </div>
+
+        <div>
+          <div>
+            <%= f.input :description, required: true, input_html: { class:"textarea" }, wrapper: false, label_html: { class:"label" } %>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <%= f.button :submit,  class: "btn"%>
+            <%= link_to 'Cancel', user_products_url(current_user), class: "btn waves-effect waves-light"%>
+          </div>
+        </div>
+      <% end %>
 </div>
+
+<script>
+document.addEventListener("turbolinks:load", function () {
+  var elems = document.getElementById("product_category_ids");
+  var options = document.getElementsByTagName("options");
+  var instances = M.FormSelect.init(elems, options);
+});
+</script>

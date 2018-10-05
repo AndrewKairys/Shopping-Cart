@@ -1,7 +1,8 @@
 <div>
-    <%= simple_form_for @product, url: category_products_url(product.categories) do |f| %>
-      <%= f.error_notification %>
 
+    <%= simple_form_for @product, method: :POST, url: category_products_url(product.category_id) do |f| %>
+      <%= f.error_notification %>
+      
       <div>
         <div class="input-field">
           <%= f.association :categories %>
@@ -29,7 +30,7 @@
         <div>
           <div>
             <%= f.button :submit,  class: "btn"%>
-            <%= link_to 'Cancel', category_products_url(product.categories), class: "btn waves-effect waves-light"%>
+            <%= link_to 'Cancel', user_products_url(current_user), class: "btn waves-effect waves-light"%>
           </div>
         </div>
       <% end %>
