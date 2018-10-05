@@ -20,6 +20,10 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:category_id])
   end
 
+  def new
+    @product = current_user.products.build
+  end
+
   def create
     @product = current_user.products.build(product_params)
 
@@ -32,7 +36,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to cart_path
+      redirect_to category_products_path
     else
       :abort
     end 
