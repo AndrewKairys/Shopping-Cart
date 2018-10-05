@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
 
   resources :users do
-    resources :products, controller: 'user'
+    resources :products
   end
   resources :categories, only: [:index] do 
     resources :products 
