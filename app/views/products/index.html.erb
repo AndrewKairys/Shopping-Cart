@@ -1,7 +1,10 @@
 <h2>
   <%= link_to "Categories", root_path %> /
-  <%= @category.name %> /
+  <% if @category %>
+      <%= @category.name %> /
+  <% end %>
   Products
+  
 </h2>
 
 <div class="row">
@@ -15,10 +18,6 @@
             <p>Price: <%= number_to_currency(product.price) %></p>
             </div>
             <div class="card-action">
-            <% if product_author(product) %>
-            <a id="inline"><%= link_to 'Edit', edit_user_product_url(@category, product) %></a>
-            <a id="inline"><%= link_to 'Delete', user_product_url(current_user, product.id), method: :delete, data: { confirm: "Are you sure ?" } %></a>
-            <% end %>
             </div>
             </div>
       </div>
