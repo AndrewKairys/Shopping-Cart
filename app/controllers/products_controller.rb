@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      :abort
+      render :new
     end
   end
 
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to category_products_path
     else
-      :abort
+      render :new
     end 
   end
 
