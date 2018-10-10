@@ -4,7 +4,12 @@ class Product < ApplicationRecord
   has_many :order_items
   belongs_to :user, optional: true
 
-  validates :name, :price, presence: true
-  validates :description, length: { maximum: 250, too_long: "%{count} characters is the maximum aloud. "}
-  validates :price, length: { maximum: 7 }
+  validates :name, :categories, :price, presence: true
+  validates :description, presence: true, length: { maximum: 250, too_long: "%{count} characters is the maximum aloud. "}
+  validates :price, numericality: {only_float: true}, length: { maximum: 7 }
+
+  def total_price
+    products.to_a.sum { |product| product.total_price}
+  end
+
 end
