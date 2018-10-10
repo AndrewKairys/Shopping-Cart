@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  scope :created_at, -> created {"product.created_at"}
+  #scope :most_expensive, -> {}
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
   has_many :order_items
