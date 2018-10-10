@@ -5,12 +5,12 @@
   </div>
 
   <div>
-    <strong><%=link_to order_item.product.name   %></strong>
+    <strong><%= order_item.product.name %></strong>
     <div>
       <div>
         <%= truncate(order_item.product.description, length: 140) %>
       </div>
-      <div>
+    <div>
         <strong><%= number_to_currency(order_item.total_price) %></strong>
       </div>
     </div>
