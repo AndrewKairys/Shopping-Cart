@@ -1,4 +1,4 @@
-# Project Title
+# Shopping-Cart
 
 A simple ecommerce market where users can upload produts to a communal marketplace and add them to their cart.
 
