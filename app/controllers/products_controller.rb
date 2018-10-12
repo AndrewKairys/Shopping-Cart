@@ -50,6 +50,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def products_by_price
+    @products = Product.products_by_price 
+  end
+
   private
 
     def set_product

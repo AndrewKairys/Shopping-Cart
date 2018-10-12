@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'omniauth_callbacks'
   }
 
+  get 'products_by_price', :to => 'products#products_by_price'
   resources :users do
     resources :products
   end
